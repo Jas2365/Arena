@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-#define VOID  0ULL
+// #define VOID  0ULL
 #define space " "
 #define put_space putchar(' ')
 #define endl "\n"

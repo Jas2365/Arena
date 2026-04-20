@@ -2,22 +2,33 @@
 #include <defs.h>
 
 #include <stdio.h>
-#include <Arena/arena.h>
+#include <Arena/arena3.h>
+#include <String/String.h>
 
 i32 main(null) { 
     
-    arena_init();
+    _Arena_Init_;
 
-    arena_push(0x23);
-    arena_push(0x23);
-    // arena_set(0, 0x23);
-    // arena_set(2, 0x23);
-    // arena_set(4, 0x23);
+    string a = set_string("hello", 5);
+    string b = set_string(" ", 1);
+    string c = set_string("world", 5);
+    string d = set_string(" ", 1);
+    
+    string e = set_string("\n", 1);
+    string f = set_string("\0 2323", 6);
 
-    print_arena();
+    string_free(c);
 
+    // string e = set_string("names", 5);
 
-    arena_free();
+    // Arena_Print();
+
+    print_block();
+
+    // string_audit_log();
+    
+    _Arena_Free_;
+
 
     return 0;
 }

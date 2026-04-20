@@ -2,13 +2,13 @@
 
 #include <ints.h>
 
-typedef struct Arena Arena;
+// typedef struct Arena Arena;
 
-typedef struct handle handle;
+// typedef struct handle handle;
 
-extern Arena arena_g;
+// extern Arena arena_g;
 
-null arena_init();
+// null arena_init();
 null arena_free();
 
 i8  arena_get(i32 i);

@@ -1,10 +1,11 @@
 cxx = gcc
 cflags =
+ldflags = -lbcrypt
 
 src_dir = src
 out_dir = out
 
-inc = -Iinc -IArena
+inc = -Iinc -IArena -IString
 srcs = $(wildcard $(src_dir)/*.c) $(wildcard $(src_dir)/**/*.c)
 
 objs = $(patsubst $(src_dir)/%.c, $(out_dir)/%.o, $(srcs))
@@ -33,7 +34,7 @@ $(dirs):
 #  linking 
 $(target): $(objs)
 	@echo Linking $@ ...
-	@$(cxx) $(objs) -o $(target)
+	@$(cxx) $(objs) -o $(target) $(ldflags)
 
 # compilation
 $(out_dir)/%.o : $(src_dir)/%.c | $(dirs)
@@ -44,7 +45,7 @@ run:
 	@echo  ---- Running Project ---- 
 	@./$(target)
 	@echo  ---- Ending  Project ---- 
-	
+
 clean:
 	@echo ---- Cleaning up ----
 	@$(RM)
