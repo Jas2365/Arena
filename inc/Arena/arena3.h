@@ -13,7 +13,7 @@ typedef struct Arena {
 
 extern Arena G;
 
-#define arena_size 129
+#define arena_size 128
 
 null Arena_Init();
 null Arena_Free();

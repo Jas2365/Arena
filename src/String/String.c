@@ -130,6 +130,14 @@ cip8 get_string(string s, sp64 out_len) {
     return (cip8)((up8)G.storage + meta->offset);
 }
 
+cip8 get_stringc(string s) {
+    string_meta* meta;
+    if(!validate_handle(s, &meta)) {
+        return nullptr;
+    }
+    return (cip8)((up8)G.storage + meta->offset);
+}
+
 s64 string_length(string s) {
     string_meta* meta;
     if(!validate_handle(s, &meta)) return -1;

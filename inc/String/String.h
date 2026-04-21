@@ -47,10 +47,14 @@ null String_Init();
 string set_string(cip8 str, s64 len);
 
 // access
-const char* get_string(string s, sp64 out_len);
+cip8 get_string(string s, sp64 out_len);
+cip8 get_stringc(string s);
+
 
 b8 string_equals(string a, string b);
 s64 string_length(string s);
+
+#define arg_str(sv) string_length(sv), get_stringc(sv)
 
 // free
 null string_free(string s);

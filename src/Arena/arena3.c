@@ -13,7 +13,6 @@ null Arena_Init() {
     G.used      = 0;
 
     memset(G.storage, -1, arena_size);
-
 }
 
 null Arena_Free() {
@@ -49,14 +48,14 @@ null print_byte_char(s64 index) {
 i32 print_line(s64 start, s64 width) {
    
     for(s64 i = start; i < start+width; i++) {
-    
         if (i < G.used) {
             print_byte(i);
         } 
-        else if(i > G.capacity) {
-            printf("%02c ", ' ');
-        }else {
+        else if(i < G.capacity) {
             printf("%02x ", 0);
+        }
+        else {
+            printf("%02c ", ' ');
         }  
     };
 
@@ -66,16 +65,15 @@ i32 print_line(s64 start, s64 width) {
 i32 print_line_char(s64 start, s64 width) {
    
     for(s64 i = start; i < start+width; i++) {
-    
         if (i < G.used) {
             print_byte_char(i);
         } 
-        else if(i > G.capacity) {
-            printf("%02c ", ' ');
+        else if(i < G.capacity) {
+            printf("%02x ", 0);
         }
         else {
-            printf("%02x ", 0);
-        }  
+            printf("%02c ", ' ');
+        }
     };
 
     return 1;
@@ -98,7 +96,6 @@ null print_block() {
     printf("----------------------------------------------------------------------------------------------------------------"endl);
     endline;
 }
-
 
 null print_row(s64 start, s64 width) {
     for(s64 i = start; i < start + width; i++){
