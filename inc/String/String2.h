@@ -16,7 +16,7 @@ string invalid_string = {
     .len = 0
 };
 
-string make_string(cip8 data) {
+string make_string(cip8 data /* string view from the compiler and copy to the heap*/) {
     string res;
     if(data) {
         i32 len = strlen(data);
@@ -27,6 +27,20 @@ string make_string(cip8 data) {
         res = invalid_string;
     }
     return res;
+}
+
+string concat(const string* a, const string* b) {
+    string concat;
+    if(a->data && b->data) {
+        concat.data = (ip8)malloc(a->len + b->len);
+        concat.len = a->len + b->len;
+        memmove(concat.data, a->data, a->len);
+        memmove(concat.data + a->len, b->data, b->len);
+    } else {
+        concat = invalid_string;
+    }
+    return concat;
+
 }
 
 #define fmt_str "%.*s"
